@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
-
+// ara ara ara yoko :3
     @Autowired
     private ProductoService productoService;
 
