@@ -32,13 +32,13 @@ public class Producto {
     @Column(name = "precio")
     private int precio;
 
-    @Column
+    @Column(name = "categoria")
     private String categoria;
 
-    @Column
+    @Column(name = "talla")
     private String talla;
 
-    @Column
+    @Column(name = "genero")
     private String genero;
 
 }
