@@ -20,6 +20,5 @@ public interface ProductMapper {
     @Mapping(source = "genero",target = "genero")
     ProductoResponse toDto(Producto producto);
     @InheritInverseConfiguration
-
     Producto toEntity(ProductoRequest productoRequest);
 }
