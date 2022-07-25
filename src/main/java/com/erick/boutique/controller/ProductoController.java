@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
-// ara ara ara yoko :3
+
     @Autowired
     private ProductoService productoService;
 
@@ -29,8 +29,6 @@ public class ProductoController {
         ProductoResponse product = productoService.save(request);
         return product;
     }
-
-
 
     @DeleteMapping("/eliminar/{idProducto}")
     public ResponseEntity delete(@PathVariable int idProducto) {
