@@ -30,8 +30,6 @@ public class ProductoController {
         return product;
     }
 
-
-
     @DeleteMapping("/eliminar/{idProducto}")
     public ResponseEntity delete(@PathVariable int idProducto) {
         productoService.delete(idProducto);
