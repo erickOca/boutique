@@ -2,6 +2,9 @@ package com.erick.boutique.service;
 
 import com.erick.boutique.model.dao.ProductoDao;
 import com.erick.boutique.model.entity.Producto;
+import com.erick.boutique.model.mapper.ProductMapper;
+import com.erick.boutique.model.request.ProductoRequest;
+import com.erick.boutique.model.response.ProductoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +15,18 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Autowired
     private ProductoDao productoDao;
+
+    @Autowired
+    private ProductMapper productMapper;
+
     @Override
-    public Producto save(Producto producto) {
-        return productoDao.save(producto);
+    public ProductoResponse save(ProductoRequest request) {
+        Producto entityRequest = new Producto();
+        entityRequest = productMapper.INSTANCE.toEntity(request);
+        ProductoResponse producto = productMapper.toDto(productoDao.save(entityRequest));
+        return producto;
     }
+
 
     @Override
     public Producto findById(int idProducto) {
@@ -31,4 +42,6 @@ public class ProductoServiceImpl implements ProductoService{
     public void delete(int idProducto) {
     productoDao.deleteById(idProducto);
     }
+
+
 }
