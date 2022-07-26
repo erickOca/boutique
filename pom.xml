@@ -36,6 +36,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 		<!-- Swagger UI -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -54,6 +55,12 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.24</version>
 			<scope>provided</scope>
+=======
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>9.0.1</version>
+>>>>>>> c34651f06215196f08c2a494efe08dd4702e5500
 		</dependency>
 	</dependencies>
 
@@ -64,6 +71,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
+<<<<<<< HEAD
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
@@ -88,6 +96,11 @@
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
+=======
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>9.0.1</version>
+>>>>>>> c34651f06215196f08c2a494efe08dd4702e5500
 			</plugin>
 		</plugins>
 	</build>
