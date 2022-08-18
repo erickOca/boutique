@@ -12,11 +12,15 @@ import org.mapstruct.factory.Mappers;
 public interface ProductMapper {
     ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
     @Mapping(source = "nombre",target = "nombre")
-    @Mapping(source = "marca",target = "marca")
-    @Mapping(source = "stock",target = "stock")
+    @Mapping(source = "descripcion",target = "descripcion")
     @Mapping(source = "precio",target = "precio")
+    @Mapping(source = "marca",target = "marca")
     @Mapping(source = "talla",target = "talla")
+    @Mapping(source = "stock",target = "stock")
+    @Mapping(source = "color",target = "color")
     @Mapping(source = "genero",target = "genero")
+    @Mapping(source = "codigoBarras",target = "codigoBarras")
+    @Mapping(source = "temporada",target = "temporada")
     ProductoResponse toDto(Productos producto);
     @InheritInverseConfiguration
     Productos toEntity(ProductoRequest productoRequest);
