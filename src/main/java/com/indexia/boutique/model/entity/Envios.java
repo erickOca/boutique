@@ -1,3 +1,4 @@
+
 package com.indexia.boutique.model.entity;
 
 import javax.persistence.*;
@@ -8,14 +9,19 @@ public class Envios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idEnvios")
+    @Column(name = "idEnvios", nullable = false, unique = true)
     private int idEnvio;
 
     @Column(name = "estatusEnvio")
     private Boolean estatusEnvio;
 
-    @OneToOne(mappedBy = "envios",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
+    @JoinColumn(name = "idCompras_Productos")
+    @OneToOne(fetch = FetchType.LAZY)
     private ComprasProductos comprasProductos;
+
+    @JoinColumn(name = "idCliente")
+    @OneToOne(fetch = FetchType.LAZY)
+    private Clientes clientesEnv;
 
 
 }

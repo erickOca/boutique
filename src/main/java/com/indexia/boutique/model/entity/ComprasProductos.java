@@ -11,8 +11,10 @@ import javax.persistence.*;
 @Table(name = "comprasProductos")
 public class ComprasProductos {
 
-    @EmbeddedId
-    private ComprasProductosPK id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCompras_Productos", nullable = false, unique = true)
+    private int idComprasProductos;
 
     @Column(name = "total")
     private int total;
@@ -20,8 +22,14 @@ public class ComprasProductos {
     @Column(name = "estatus")
     private Boolean estatus;
 
-    @JoinColumn(name = "idEnvios")
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "comprasProductos",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private Envios envios;
 
+    @JoinColumn(name = "idProducto")
+    @OneToOne(fetch = FetchType.LAZY)
+    private Productos productosCom;
+
+    @JoinColumn(name = "idCompras")
+    @OneToOne(fetch = FetchType.LAZY)
+    private Compras compras;
 }

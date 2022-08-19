@@ -13,37 +13,40 @@ public class Productos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idProducto")
+    @Column(name = "idProducto",nullable = false,unique = true)
     private int idProducto;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", length = 50)
     private String nombre;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", length = 200)
     private String descripcion;
 
     @Column(name = "precio")
     private float precio;
 
-    @Column(name = "marca")
+    @Column(name = "marca", length = 45)
     private String marca;
 
-    @Column(name = "talla")
+    @Column(name = "talla", length = 45)
     private String talla;
 
-    @Column(name = "color")
+    @Column(name = "color", length = 80)
     private String color;
 
     @Column(name = "stock")
     private int stock;
 
-    @Column(name = "codigoBarras")
+    @Column(name = "codigoBarras", length = 80)
     private String codigoBarras;
 
-    @Column(name = "temporada")
+    @Column(name = "temporada", length = 45)
     private String temporada;
 
-    @Column(name = "genero")
+    @Column(name = "genero", length = 45)
     private String genero;
+
+    @OneToOne(mappedBy = "compras",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
+    private ComprasProductos comprasProductosCli;
 }
 
