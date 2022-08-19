@@ -21,15 +21,15 @@ public class ComprasProductos {
 
     @Column(name = "estatus")
     private Boolean estatus;
-
-    @OneToOne(mappedBy = "comprasProductos",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
+/*
+    @OneToMany(mappedBy = "comprasProductos",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private Envios envios;
-
+*/
     @JoinColumn(name = "idProducto")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Productos productosCom;
 
     @JoinColumn(name = "idCompras")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Compras compras;
 }

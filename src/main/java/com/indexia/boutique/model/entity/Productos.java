@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -46,7 +47,8 @@ public class Productos {
     @Column(name = "genero", length = 45)
     private String genero;
 
-    @OneToOne(mappedBy = "compras",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
-    private ComprasProductos comprasProductosCli;
+   /* @OneToMany(mappedBy = "compras", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ComprasProductos> comprasProductosCli;
+    */
 }
 

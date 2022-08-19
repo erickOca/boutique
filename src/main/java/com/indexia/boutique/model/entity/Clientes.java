@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -62,10 +63,10 @@ public class Clientes {
     @Column(name = "pais", length = 45)
     private String pais;
 
-    @OneToOne(mappedBy = "clientes",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
-    private Compras compras;
+   /* @OneToMany(mappedBy = "clientes",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
+    private List<Compras> compras;
 
-
-    @OneToOne(mappedBy = "clientesEnv",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "clientesEnv",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private Envios enviosCli;
+    */
 }

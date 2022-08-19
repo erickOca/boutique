@@ -16,11 +16,11 @@ public class Envios {
     private Boolean estatusEnvio;
 
     @JoinColumn(name = "idCompras_Productos")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private ComprasProductos comprasProductos;
 
     @JoinColumn(name = "idCliente")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Clientes clientesEnv;
 
 
