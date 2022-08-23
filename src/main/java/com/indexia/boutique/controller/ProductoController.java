@@ -30,9 +30,15 @@ public class ProductoController {
         return product;
     }
 
-    @DeleteMapping("/eliminar/{idProducto}")
+    @DeleteMapping("/delete/{idProducto}")
     public ResponseEntity delete(@PathVariable int idProducto) {
         productoService.delete(idProducto);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getById/{idProducto}")
+    public ResponseEntity<Productos> findById(@PathVariable int idProducto) {
+        productoService.findById(idProducto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
