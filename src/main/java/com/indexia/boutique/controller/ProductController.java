@@ -13,8 +13,8 @@ import java.util.List;
 
 @CrossOrigin(origins = {"http://localhost:4200/"})
 @RestController
-@RequestMapping("/productos")
-public class ProductoController {
+@RequestMapping("/products")
+public class ProductController {
 
     @Autowired
     private ProductoService productoService;

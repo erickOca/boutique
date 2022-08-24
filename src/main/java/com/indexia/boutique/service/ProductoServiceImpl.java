@@ -42,5 +42,4 @@ public class ProductoServiceImpl implements ProductoService {
         productoDao.deleteById(idProducto);
     }
 
-
 }

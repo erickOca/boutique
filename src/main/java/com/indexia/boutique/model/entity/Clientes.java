@@ -62,10 +62,4 @@ public class Clientes {
     @Column(name = "pais", length = 45)
     private String pais;
 
-    @OneToOne(mappedBy = "clientes",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
-    private Compras compras;
-
-
-    @OneToOne(mappedBy = "clientesEnv",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
-    private Envios enviosCli;
 }
