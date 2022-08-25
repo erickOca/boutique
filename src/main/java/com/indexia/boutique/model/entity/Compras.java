@@ -33,10 +33,11 @@ public class Compras {
     private float subTotal;
 
     @JoinColumn(name = "idCliente")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Clientes clientes;
-
-    @OneToOne(mappedBy = "compras",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
+/*
+    @OneToMany(mappedBy = "compras",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
     private ComprasProductos comprasProductos;
+*/
 
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -46,7 +47,5 @@ public class Productos {
     @Column(name = "genero", length = 45)
     private String genero;
 
-    @Column(name = "categoria",length = 45)
-    private String categoria;
 }
 
