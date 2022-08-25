@@ -26,4 +26,6 @@ public class ProductoRequest {
     private String temporada;
 
     private String genero;
+
+    private String categoria;
 }

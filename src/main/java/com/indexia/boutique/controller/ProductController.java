@@ -37,8 +37,35 @@ public class ProductController {
     }
 
     @GetMapping("/getById/{idProducto}")
-    public ResponseEntity<Productos> findById(@PathVariable int idProducto) {
+    public ResponseEntity<List<Productos>> findById(@PathVariable int idProducto) {
         productoService.findById(idProducto);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getByTalla")
+    public ResponseEntity<?> findAllByTalla(@RequestParam String talla) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(productoService.findByTalla(talla));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+    @GetMapping("/getByGenero")
+    public ResponseEntity<?> findByGenero(@RequestParam String genero) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(productoService.findByGenero(genero));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+    @GetMapping("/getByCategoria")
+    public ResponseEntity<?> findByCategoria(@RequestParam String categoria){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(productoService.findByCategoria(categoria));
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductoService {
 
@@ -16,7 +17,10 @@ public interface ProductoService {
 
     void delete(int idProducto);
 
+    List<Productos> findByTalla(String talla);
 
+    List<Productos> findByGenero(String genero);
 
+    List<Productos> findByCategoria(String categoria);
 }
 

@@ -7,7 +7,6 @@ import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -42,4 +41,22 @@ public class ProductoServiceImpl implements ProductoService {
         productoDao.deleteById(idProducto);
     }
 
+    @Override
+    public List<Productos> findByTalla(String talla) {
+        List<Productos> productos = productoDao.findByTalla(talla);
+        return productos;
+    }
+
+    @Override
+    public List<Productos> findByGenero(String genero) {
+        List<Productos> productos = productoDao.findByGenero(genero);
+        return productos;
+    }
+
+    @Override
+    public List<Productos> findByCategoria(String categoria) {
+        List<Productos> productos = productoDao.findByCategoria(categoria);
+        return productos;
+    }
 }
+

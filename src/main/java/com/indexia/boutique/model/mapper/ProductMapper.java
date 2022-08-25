@@ -21,6 +21,7 @@ public interface ProductMapper {
     @Mapping(source = "genero",target = "genero")
     @Mapping(source = "codigoBarras",target = "codigoBarras")
     @Mapping(source = "temporada",target = "temporada")
+    @Mapping(source = "categoria",target = "categoria")
     ProductoResponse toDto(Productos ucto);
     @InheritInverseConfiguration
     Productos toEntity(ProductoRequest productoRequest);
