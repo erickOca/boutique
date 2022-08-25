@@ -46,7 +46,7 @@ public class Productos {
     @Column(name = "genero", length = 45)
     private String genero;
 
-    @OneToOne(mappedBy = "compras",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
-    private ComprasProductos comprasProductosCli;
+    @Column(name = "categoria",length = 45)
+    private String categoria;
 }
 
