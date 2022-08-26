@@ -29,9 +29,9 @@ public class ClientController {
     }
 
     @GetMapping("/findAllClient")
-    public ResponseEntity<List<Clientes>> listClient(){
+    public ResponseEntity<List<ClienteResponse>> listClient(){
         try {
-            List<Clientes> clientes = clientesService.findAll();
+            List<ClienteResponse> clientes = clientesService.findAll();
             return  ResponseEntity.status(HttpStatus.OK).body(clientes);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
@@ -39,12 +39,12 @@ public class ClientController {
     }
 
     @GetMapping("/getClientById/{idCliente}")
-    public ResponseEntity<Clientes> findById(@PathVariable int idCliente){
+    public ResponseEntity<ClienteResponse> findById(@PathVariable int idCliente){
         try {
-            Clientes cliente = clientesService.findById(idCliente);
+            ClienteResponse cliente = clientesService.findById(idCliente);
             return ResponseEntity.status(HttpStatus.OK).body(cliente);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Clientes());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ClienteResponse());
         }
     }
 

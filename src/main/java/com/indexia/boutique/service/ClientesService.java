@@ -10,11 +10,11 @@ public interface ClientesService {
 
     ClienteResponse saveClient(ClienteRequest request);
 
-    List<Clientes> findAll();
+    List<ClienteResponse> findAll();
 
-    Clientes findById(int idCliente);
+    ClienteResponse findById(int idCliente);
 
     void delete(int idCliente);
 
-     public Clientes updateClient(ClienteRequest request);
+      ClienteResponse updateClient(ClienteRequest request);
 }

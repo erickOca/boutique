@@ -28,13 +28,15 @@ public class ClientesServiceImpl implements ClientesService{
     }
 
     @Override
-    public List<Clientes> findAll() {
-        return clientesDao.findAll();
+    public List<ClienteResponse> findAll() {
+        List<ClienteResponse> list = clientMapper.toMapperDtoLis(clientesDao.findAll());
+        return list;
     }
 
     @Override
-    public Clientes findById(int idCliente) {
-        return clientesDao.findById(idCliente).orElse(null);
+    public ClienteResponse findById(int idCliente) {
+        ClienteResponse response = clientMapper.toMapperDto(clientesDao.findById(idCliente).orElse(null));
+        return response;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class ClientesServiceImpl implements ClientesService{
     }
 
     @Override
-    public Clientes updateClient(ClienteRequest request) {
+    public ClienteResponse updateClient(ClienteRequest request) {
         Clientes cliente =new Clientes(
                 request.getId(),
                 request.getNombre(),
@@ -62,6 +64,8 @@ public class ClientesServiceImpl implements ClientesService{
                 request.getCiudad(),
                 request.getPais()
         );
-        return clientesDao.save(cliente);
+        Clientes entityClientes = new Clientes();
+        ClienteResponse response = clientMapper.toMapperDto(clientesDao.save(cliente));
+        return response;
     }
 }

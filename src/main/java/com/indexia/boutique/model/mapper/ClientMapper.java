@@ -9,6 +9,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface ClientMapper {
     ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
@@ -27,6 +29,7 @@ public interface ClientMapper {
     @Mapping(source = "ciudad",target ="ciudad")
     @Mapping(source = "pais",target ="pais")
     ClienteResponse toMapperDto(Clientes clientes);
+    List<ClienteResponse> toMapperDtoLis(List<Clientes> clientesList);
     @InheritInverseConfiguration
     Clientes toMapperEntity(ClienteRequest clienteRequest);
 
