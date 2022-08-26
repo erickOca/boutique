@@ -22,5 +22,7 @@ public interface ProductoService {
     List<Productos> findByGenero(String genero);
 
     List<Productos> findByCategoria(String categoria);
+
+    public Productos updateProduct(ProductoRequest request);
 }
 

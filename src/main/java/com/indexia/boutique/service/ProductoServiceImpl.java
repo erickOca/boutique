@@ -58,5 +58,22 @@ public class ProductoServiceImpl implements ProductoService {
         List<Productos> productos = productoDao.findByCategoria(categoria);
         return productos;
     }
+
+    @Override
+    public Productos updateProduct(ProductoRequest request) {
+        Productos productos  = new Productos();
+        productos.setIdProducto(request.getId());
+        productos.setNombre(request.getNombre());
+        productos.setDescripcion(request.getDescripcion());
+        productos.setPrecio(request.getPrecio());
+        productos.setMarca(request.getMarca());
+        productos.setTalla(request.getTalla());
+        productos.setColor(request.getColor());
+        productos.setStock(request.getStock());
+        productos.setTemporada(request.getTemporada());
+        productos.setGenero(request.getGenero());
+        productos.setCategoria(request.getCategoria());
+        return productoDao.save(productos);
+    }
 }
 
