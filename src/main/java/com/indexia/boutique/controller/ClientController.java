@@ -19,32 +19,49 @@ public class ClientController {
     private ClientesService clientesService;
 
     @PostMapping("/saveClient")
-    public ClienteResponse saveClient(@RequestBody ClienteRequest clienteRequest){
-        ClienteResponse client = clientesService.saveClient(clienteRequest);
-        return client;
+    public ResponseEntity<ClienteResponse> saveClient(@RequestBody ClienteRequest clienteRequest){
+        try {
+            ClienteResponse client = clientesService.saveClient(clienteRequest);
+            return ResponseEntity.status(HttpStatus.OK).body(client);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ClienteResponse());
+        }
     }
 
     @GetMapping("/findAllClient")
     public ResponseEntity<List<Clientes>> listClient(){
-        return new ResponseEntity<>(clientesService.findAll(), HttpStatus.OK);
+        try {
+            List<Clientes> clientes = clientesService.findAll();
+            return  ResponseEntity.status(HttpStatus.OK).body(clientes);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/getClientById/{idCliente}")
     public ResponseEntity<Clientes> findById(@PathVariable int idCliente){
-        clientesService.findById(idCliente);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try {
+            Clientes cliente = clientesService.findById(idCliente);
+            return ResponseEntity.status(HttpStatus.OK).body(cliente);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Clientes());
+        }
     }
 
     @DeleteMapping("/deleteClient/{idCliente}")
     public ResponseEntity deleteClient(@PathVariable int idCliente){
-        clientesService.delete(idCliente);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try {
+            clientesService.delete(idCliente);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/updateCliente")
     public ResponseEntity<?> updateCliente(@RequestBody ClienteRequest request){
         try {
-      return ResponseEntity.status(HttpStatus.OK).body(clientesService.updateClient(request));
+            return ResponseEntity.status(HttpStatus.OK).body(clientesService.updateClient(request));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
