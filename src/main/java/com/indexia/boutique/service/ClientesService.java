@@ -15,4 +15,6 @@ public interface ClientesService {
     Clientes findById(int idCliente);
 
     void delete(int idCliente);
+
+     public Clientes updateClient(ClienteRequest request);
 }

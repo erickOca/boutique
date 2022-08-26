@@ -62,4 +62,25 @@ public class Clientes {
     @Column(name = "pais", length = 45)
     private String pais;
 
+    public Clientes() {
+    }
+
+    public Clientes(int idCliente, String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String sexo, Date fechaNac, Boolean estatus, String email, String numeroInterior, String numeroExterior, String calle, String colonia, String estado, String ciudad, String pais) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.direccion = direccion;
+        this.sexo = sexo;
+        this.fechaNac = fechaNac;
+        this.estatus = estatus;
+        this.email = email;
+        this.numeroInterior = numeroInterior;
+        this.numeroExterior = numeroExterior;
+        this.calle = calle;
+        this.colonia = colonia;
+        this.estado = estado;
+        this.ciudad = ciudad;
+        this.pais = pais;
+    }
 }

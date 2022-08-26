@@ -9,6 +9,8 @@ import java.util.Date;
 @Setter
 public class ClienteRequest {
 
+    private int id;
+
     private String nombre;
 
     private String apellidoPaterno;

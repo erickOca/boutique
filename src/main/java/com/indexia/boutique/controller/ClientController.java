@@ -40,4 +40,13 @@ public class ClientController {
         clientesService.delete(idCliente);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping("/updateCliente")
+    public ResponseEntity<?> updateCliente(@RequestBody ClienteRequest request){
+        try {
+      return ResponseEntity.status(HttpStatus.OK).body(clientesService.updateClient(request));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
 }
