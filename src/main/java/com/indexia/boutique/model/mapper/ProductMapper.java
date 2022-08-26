@@ -8,6 +8,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
     ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
@@ -23,6 +25,8 @@ public interface ProductMapper {
     @Mapping(source = "temporada",target = "temporada")
     @Mapping(source = "categoria",target = "categoria")
     ProductoResponse toDto(Productos ucto);
+    List<ProductoResponse> toDtoLis(List<Productos> ucto);
     @InheritInverseConfiguration
     Productos toEntity(ProductoRequest productoRequest);
+
 }

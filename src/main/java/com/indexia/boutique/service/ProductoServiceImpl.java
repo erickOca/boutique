@@ -27,13 +27,15 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public Productos findById(int idProducto) {
-        return productoDao.findById(idProducto).orElse(null);
+    public ProductoResponse findById(int idProducto) {
+        ProductoResponse response = productMapper.toDto(productoDao.findById(idProducto).orElse(null));
+        return response;
     }
 
     @Override
-    public List<Productos> findAll() {
-        return productoDao.findAll();
+    public List<ProductoResponse> findAll() {
+        List<ProductoResponse> responses = productMapper.toDtoLis(productoDao.findAll());
+        return responses;
     }
 
     @Override
@@ -42,25 +44,25 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public List<Productos> findByTalla(String talla) {
-        List<Productos> productos = productoDao.findByTalla(talla);
+    public List<ProductoResponse> findByTalla(String talla) {
+        List<ProductoResponse> productos = productMapper.toDtoLis(productoDao.findByTalla(talla));
         return productos;
     }
 
     @Override
-    public List<Productos> findByGenero(String genero) {
-        List<Productos> productos = productoDao.findByGenero(genero);
+    public List<ProductoResponse> findByGenero(String genero) {
+        List<ProductoResponse> productos = productMapper.toDtoLis(productoDao.findByGenero(genero));
         return productos;
     }
 
     @Override
-    public List<Productos> findByCategoria(String categoria) {
-        List<Productos> productos = productoDao.findByCategoria(categoria);
+    public List<ProductoResponse> findByCategoria(String categoria) {
+        List<ProductoResponse> productos = productMapper.toDtoLis(productoDao.findByCategoria(categoria));
         return productos;
     }
 
     @Override
-    public Productos updateProduct(ProductoRequest request) {
+    public ProductoResponse updateProduct(ProductoRequest request) {
         Productos productos  = new Productos();
         productos.setIdProducto(request.getId());
         productos.setNombre(request.getNombre());
@@ -70,10 +72,12 @@ public class ProductoServiceImpl implements ProductoService {
         productos.setTalla(request.getTalla());
         productos.setColor(request.getColor());
         productos.setStock(request.getStock());
+        productos.setCodigoBarras(request.getCodigoBarras());
         productos.setTemporada(request.getTemporada());
         productos.setGenero(request.getGenero());
         productos.setCategoria(request.getCategoria());
-        return productoDao.save(productos);
+        ProductoResponse response = productMapper.toDto(productoDao.save(productos));
+        return response ;
     }
 }
 

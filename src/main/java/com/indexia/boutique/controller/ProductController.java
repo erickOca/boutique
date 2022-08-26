@@ -20,26 +20,42 @@ public class ProductController {
     private ProductoService productoService;
 
     @GetMapping("/getProducto")
-    public ResponseEntity<List<Productos>> listaProducto() {
-        return new ResponseEntity<>(productoService.findAll(), HttpStatus.OK);
+    public ResponseEntity<?> listaProducto() {
+        try {
+            return new ResponseEntity<>(productoService.findAll(), HttpStatus.OK);
+        }catch (Exception e){
+            List<Productos> productos = (List<Productos>) new Productos();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(productos);
+        }
     }
 
     @PostMapping("/save")
-    public ProductoResponse CrearProducto(@RequestBody ProductoRequest request) {
-        ProductoResponse product = productoService.save(request);
-        return product;
+    public ResponseEntity<ProductoResponse> CrearProducto(@RequestBody ProductoRequest request) {
+        try {
+            ProductoResponse product = productoService.save(request);
+            return ResponseEntity.status(HttpStatus.OK).body(product);
+        }catch (Exception e){
+          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ProductoResponse());
+        }
     }
 
     @DeleteMapping("/delete/{idProducto}")
     public ResponseEntity delete(@PathVariable int idProducto) {
-        productoService.delete(idProducto);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try {
+            productoService.delete(idProducto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/getById/{idProducto}")
-    public ResponseEntity<List<Productos>> findById(@PathVariable int idProducto) {
-        productoService.findById(idProducto);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<ProductoResponse> findById(@PathVariable int idProducto) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(productoService.findById(idProducto));
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/getByTalla")

@@ -1,28 +1,26 @@
 package com.indexia.boutique.service;
 
-import com.indexia.boutique.model.entity.Productos;
 import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ProductoService {
 
     ProductoResponse save(ProductoRequest request);
 
-    Productos findById(int idProducto);
+    ProductoResponse findById(int idProducto);
 
-    List<Productos> findAll();
+    List<ProductoResponse> findAll();
 
     void delete(int idProducto);
 
-    List<Productos> findByTalla(String talla);
+    List<ProductoResponse> findByTalla(String talla);
 
-    List<Productos> findByGenero(String genero);
+    List<ProductoResponse> findByGenero(String genero);
 
-    List<Productos> findByCategoria(String categoria);
+    List<ProductoResponse> findByCategoria(String categoria);
 
-    public Productos updateProduct(ProductoRequest request);
+    public ProductoResponse updateProduct(ProductoRequest request);
 }
 
