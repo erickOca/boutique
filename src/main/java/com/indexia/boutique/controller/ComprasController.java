@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/compras")
-public class CompasController {
+public class ComprasController {
 
     @Autowired
     ComprasService comprasService;
@@ -35,5 +35,4 @@ public class CompasController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
         }
     }
-
 }
