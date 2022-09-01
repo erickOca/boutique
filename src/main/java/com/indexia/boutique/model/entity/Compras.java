@@ -21,13 +21,13 @@ public class Compras {
     private Date fechaCompra;
 
     @Column(name = "medioPago")
-    private char medioPago;
+    private String medioPago;
 
     @Column(name = "comentario", length = 200)
     private String comentario;
 
     @Column(name = "estatusCompra")
-    private Boolean estatusCompra;
+    private boolean estatusCompra;
 
     @Column(name = "subTotal")
     private float subTotal;

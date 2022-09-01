@@ -30,12 +30,12 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<ProductoResponse> CrearProducto(@RequestBody ProductoRequest request) {
+    public ResponseEntity<?> CrearProducto(@RequestBody ProductoRequest request) {
         try {
             ProductoResponse product = productoService.save(request);
             return ResponseEntity.status(HttpStatus.OK).body(product);
         }catch (Exception e){
-          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ProductoResponse());
+          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Boolean.FALSE);
         }
     }
 
@@ -43,9 +43,9 @@ public class ProductController {
     public ResponseEntity delete(@PathVariable int idProducto) {
         try {
             productoService.delete(idProducto);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return ResponseEntity.status(HttpStatus.OK).body(Boolean.TRUE);
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Boolean.FALSE);
         }
     }
 
@@ -54,7 +54,7 @@ public class ProductController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(productoService.findById(idProducto));
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

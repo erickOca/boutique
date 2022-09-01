@@ -19,42 +19,42 @@ public class ClientController {
     private ClientesService clientesService;
 
     @PostMapping("/saveClient")
-    public ResponseEntity<ClienteResponse> saveClient(@RequestBody ClienteRequest clienteRequest){
+    public ResponseEntity<?> saveClient(@RequestBody ClienteRequest clienteRequest){
         try {
             ClienteResponse client = clientesService.saveClient(clienteRequest);
             return ResponseEntity.status(HttpStatus.OK).body(client);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ClienteResponse());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);
         }
     }
 
     @GetMapping("/findAllClient")
-    public ResponseEntity<List<ClienteResponse>> listClient(){
+    public ResponseEntity<?> listClient(){
         try {
             List<ClienteResponse> clientes = clientesService.findAll();
             return  ResponseEntity.status(HttpStatus.OK).body(clientes);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
         }
     }
 
     @GetMapping("/getClientById/{idCliente}")
-    public ResponseEntity<ClienteResponse> findById(@PathVariable int idCliente){
+    public ResponseEntity<?> findById(@PathVariable int idCliente){
         try {
             ClienteResponse cliente = clientesService.findById(idCliente);
             return ResponseEntity.status(HttpStatus.OK).body(cliente);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ClienteResponse());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
         }
     }
 
     @DeleteMapping("/deleteClient/{idCliente}")
-    public ResponseEntity deleteClient(@PathVariable int idCliente){
+    public ResponseEntity<?> deleteClient(@PathVariable int idCliente){
         try {
             clientesService.delete(idCliente);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return  ResponseEntity.status(HttpStatus.OK).body(Boolean.TRUE);
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Boolean.FALSE);
         }
     }
 
