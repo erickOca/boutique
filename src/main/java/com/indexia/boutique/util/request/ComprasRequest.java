@@ -3,7 +3,8 @@ package com.indexia.boutique.util.request;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 @Getter
 @Setter
@@ -17,16 +18,13 @@ private boolean estatus_compra;
 
 private Date fecha_compra;
 
-private char medio_pago;
+private int medio_pago;
 
 private float sub_total;
 
 private int idCliente;
 
-    public ComprasRequest() {
-    }
-
-    public ComprasRequest(int id, String comentario, boolean estatus_compra, Date fecha_compra, char medio_pago, float sub_total, int idCliente) {
+    public ComprasRequest(int id, String comentario, boolean estatus_compra, Date fecha_compra, int medio_pago, float sub_total, int idCliente) {
         this.id = id;
         this.comentario = comentario;
         this.estatus_compra = estatus_compra;

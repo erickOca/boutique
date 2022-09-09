@@ -15,13 +15,9 @@ public class Envios {
     @Column(name = "estatusEnvio")
     private Boolean estatusEnvio;
 
-    @JoinColumn(name = "idCompras_Productos")
+    @JoinColumn(name = "idOrden")
     @OneToOne(fetch = FetchType.LAZY)
-    private ComprasProductos comprasProductos;
-
-    @JoinColumn(name = "idCliente")
-    @OneToOne(fetch = FetchType.LAZY)
-    private Clientes clientesEnv;
+    private Orden orden;
 
 
 }

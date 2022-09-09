@@ -1,9 +1,10 @@
 package com.indexia.boutique.util.response;
 
+import com.indexia.boutique.util.request.ComprasRequest;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 @Getter
@@ -12,13 +13,13 @@ public class ComprasResponse {
 
     private int id;
 
+    private Date fecha_compra;
+
+    private int medio_pago;
+
     private String comentario;
 
     private boolean estatusCompra;
-
-    private Date fecha_compra;
-
-    private String medio_pago;
 
     private float sub_total;
 
@@ -27,13 +28,14 @@ public class ComprasResponse {
     public ComprasResponse() {
     }
 
-    public ComprasResponse(int id, String comentario, boolean estatusCompra, Date fecha_compra, String medio_pago, float sub_total, int idCliente) {
-        this.id = id;
-        this.comentario = comentario;
-        this.estatusCompra = estatusCompra;
-        this.fecha_compra = fecha_compra;
-        this.medio_pago = medio_pago;
-        this.sub_total = sub_total;
-        this.idCliente = idCliente;
+
+    public void llenado(ComprasRequest request){
+        setId(request.getId());
+        setFecha_compra(request.getFecha_compra());
+        setMedio_pago(request.getMedio_pago());
+        setComentario(request.getComentario());
+        setEstatusCompra(request.isEstatus_compra());
+        setSub_total(request.getSub_total());
+        setIdCliente(request.getIdCliente());
     }
 }
