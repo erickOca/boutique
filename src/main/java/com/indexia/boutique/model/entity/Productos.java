@@ -48,5 +48,23 @@ public class Productos {
 
     @Column(name = "categoria",length = 45)
     private String categoria;
+
+    public Productos() {
+    }
+
+    public Productos(int idProducto, String nombre, String descripcion, float precio, String marca, String talla, String color, int stock, String codigoBarras, String temporada, String genero, String categoria) {
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.marca = marca;
+        this.talla = talla;
+        this.color = color;
+        this.stock = stock;
+        this.codigoBarras = codigoBarras;
+        this.temporada = temporada;
+        this.genero = genero;
+        this.categoria = categoria;
+    }
 }
 

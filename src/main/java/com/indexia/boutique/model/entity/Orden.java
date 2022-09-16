@@ -41,7 +41,4 @@ public class Orden {
     @ManyToOne(fetch = FetchType.LAZY)
     private MedioPago medioPago;
 
-    @JoinColumn(name = "idDetalles_orden")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private DetallesOrden detallesOrden;
 }
