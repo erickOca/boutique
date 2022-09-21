@@ -21,4 +21,13 @@ public class MedioPago {
 
     @Column(name = "estatus_medio_pago")
     private boolean estatusMedioPago;
+
+    public MedioPago() {
+    }
+
+    public MedioPago(int idMedioPago, String formaDePago, boolean estatusMedioPago) {
+        this.idMedioPago = idMedioPago;
+        this.formaDePago = formaDePago;
+        this.estatusMedioPago = estatusMedioPago;
+    }
 }

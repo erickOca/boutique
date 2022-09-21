@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Table(name = "detalles_orden")
 public class DetallesOrden {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idDetalles_orden", nullable = false, unique = true)
@@ -23,8 +22,26 @@ public class DetallesOrden {
     @Column(name = "importe")
     private float importe;
 
+    @Column(name = "NDeCarro")
+    private int nDeCarro;
+
     @JoinColumn(name = "id_Producto")
     @ManyToOne(fetch = FetchType.LAZY)
     private Productos productos;
 
+    @JoinColumn(name = "idOrden")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Orden orden;
+
+    public DetallesOrden() {
+    }
+
+    public DetallesOrden(int idDetallesOrden, int unidades, float importe, int nDeCarro, Productos productos) {
+        this.idDetallesOrden = idDetallesOrden;
+        this.unidades = unidades;
+        this.importe = importe;
+        this.nDeCarro = nDeCarro;
+        this.productos = productos;
+
+    }
 }

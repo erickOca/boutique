@@ -14,4 +14,6 @@ public interface MedioPagoService {
 
     void delete(int id);
 
+    MedioPagoResponse findById(int id);
+
 }

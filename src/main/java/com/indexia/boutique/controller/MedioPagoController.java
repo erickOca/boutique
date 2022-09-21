@@ -2,6 +2,7 @@ package com.indexia.boutique.controller;
 
 import com.indexia.boutique.service.MedioPagoService;
 import com.indexia.boutique.util.request.MedioPagoRequest;
+import com.indexia.boutique.util.response.ClienteResponse;
 import com.indexia.boutique.util.response.MedioPagoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,4 +49,13 @@ public class MedioPagoController {
 
 
 
+    @GetMapping("/getMedioPagoById/{idMedioPago}")
+    public ResponseEntity<?> findById(@PathVariable int idMedioPago){
+        try {
+            MedioPagoResponse response = service.findById(idMedioPago);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+        }
+    }
 }

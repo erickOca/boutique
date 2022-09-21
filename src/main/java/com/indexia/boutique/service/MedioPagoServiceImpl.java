@@ -38,4 +38,10 @@ public class MedioPagoServiceImpl implements MedioPagoService{
         medioPagoDao.deleteById(id);
     }
 
+    @Override
+    public MedioPagoResponse findById(int id) {
+        MedioPagoResponse response = medioPagoMapper.toMapperDto(medioPagoDao.findById(id).orElse(null));
+        return response;
+    }
+
 }
