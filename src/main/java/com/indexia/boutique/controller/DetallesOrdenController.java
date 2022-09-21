@@ -40,7 +40,7 @@ public class DetallesOrdenController {
             service.deleteDetallesOrde(idDetallesOrden);
             return ResponseEntity.status(HttpStatus.OK).body(true);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.OK).body(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
         }
     }
 
@@ -49,9 +49,7 @@ public class DetallesOrdenController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.findByNDeCarro(NDeCarro));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.OK).body(e);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
         }
     }
-
-
 }

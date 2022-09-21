@@ -39,28 +39,43 @@ public class DetallesOrdenServiceImpl implements DetallesOrdenService{
 
     @Override
     public DetallesOrdenResponse updateDetallesOrde(DetallesOrdenRequest request, int id) {
-        Productos producto = productoDao.getReferenceById(request.getIdProducto());
-        DetallesOrden detallesOrden = new DetallesOrden(
-                id,
-                request.getUnidades(),
-                request.getUnidades() * producto.getPrecio(),
-                request.getNDeCarro(),
-                producto
-        );
-        DetallesOrdenResponse response = detallesOrdenMapper.toMapperDto(detallesOrdenDao.save(detallesOrden));
-        return response;
+
+        if (detallesOrdenDao.findById(id) != null){
+            Productos producto = productoDao.getReferenceById(request.getIdProducto());
+            DetallesOrden detallesOrden = new DetallesOrden(
+                    id,
+                    request.getUnidades(),
+                    request.getUnidades() * producto.getPrecio(),
+                    request.getNDeCarro(),
+                    producto
+            );
+            DetallesOrdenResponse response = detallesOrdenMapper.toMapperDto(detallesOrdenDao.save(detallesOrden));
+            return response;
+        }else {
+            System.out.printf("Id invalido intenta otra ves ");
+            return null;
+        }
     }
 
     @Override
     public void deleteDetallesOrde(int id) {
-        detallesOrdenDao.deleteById(id);
+        if (detallesOrdenDao.findById(id) != null) {
+            detallesOrdenDao.deleteById(id);
+        }else{
+            System.out.printf("no se pudo encontrar el detalle de venta ");
+        }
     }
 
    @Override
     public List<DetallesOrdenResponse> findByNDeCarro(int nDeCarro) {
         List<DetallesOrdenResponse> list = detallesOrdenMapper.toMapperDtoLis(detallesOrdenDao.findByNDeCarro(nDeCarro));
+        if (list != null){
+            return list;
+        }else{
+            System.out.printf("No se encontraron detalles de benta ");
+            return list;
+        }
 
-        return list;
     }
 
 
