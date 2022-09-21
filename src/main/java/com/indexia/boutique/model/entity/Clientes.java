@@ -1,5 +1,6 @@
 package com.indexia.boutique.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,22 +10,13 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "clientes")
+@Table(name = "detallesUsuario")
 public class Clientes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCliente", nullable = false, unique = true)
     private int idCliente;
-
-    @Column (name = "nombre", length = 80)
-    private String nombre;
-
-    @Column(name = "apellidoPaterno", length = 80)
-    private String apellidoPaterno;
-
-    @Column(name = "apellidoMaterno", length = 45)
-    private String apellidoMaterno;
 
     @Column(name = "direccion", length = 200)
     private String direccion;
@@ -37,9 +29,6 @@ public class Clientes {
 
     @Column(name = "estatus")
     private Boolean estatus;
-
-    @Column(name = "email", length = 80)
-    private String email;
 
     @Column(name = "numeroInterior", length = 45)
     private String numeroInterior;
@@ -62,19 +51,20 @@ public class Clientes {
     @Column(name = "pais", length = 45)
     private String pais;
 
+    @JsonIgnoreProperties
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idUsuario")
+    private Usuarios usuarios;
+
     public Clientes() {
     }
 
     public Clientes(int idCliente, String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String sexo, Date fechaNac, Boolean estatus, String email, String numeroInterior, String numeroExterior, String calle, String colonia, String estado, String ciudad, String pais) {
         this.idCliente = idCliente;
-        this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
         this.direccion = direccion;
         this.sexo = sexo;
         this.fechaNac = fechaNac;
         this.estatus = estatus;
-        this.email = email;
         this.numeroInterior = numeroInterior;
         this.numeroExterior = numeroExterior;
         this.calle = calle;

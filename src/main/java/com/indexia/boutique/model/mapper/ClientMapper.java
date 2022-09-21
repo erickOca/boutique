@@ -14,14 +14,10 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ClientMapper {
     ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
-    @Mapping(source = "nombre",target ="nombre")
-    @Mapping(source = "apellidoPaterno",target ="apellidoPaterno")
-    @Mapping(source = "apellidoMaterno",target ="apellidoMaterno")
     @Mapping(source = "direccion",target ="direccion")
     @Mapping(source = "sexo",target ="sexo")
     @Mapping(source = "fechaNac",target ="fechaNac")
     @Mapping(source = "estatus",target ="estatus")
-    @Mapping(source = "email",target ="email")
     @Mapping(source = "numeroInterior",target ="numeroInterior")
     @Mapping(source = "numeroExterior",target ="numeroExterior")
     @Mapping(source = "calle",target ="calle")

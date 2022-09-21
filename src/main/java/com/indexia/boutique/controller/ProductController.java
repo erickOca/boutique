@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:4200/"})
+
 @RestController
 @RequestMapping("/products")
+@CrossOrigin(origins = "http://localhost:4200" )
 public class ProductController {
 
     @Autowired
     private ProductoService productoService;
 
-    @GetMapping("/getProducto")
+    @GetMapping("/getAllProduct")
     public ResponseEntity<?> listaProducto() {
         try {
             return new ResponseEntity<>(productoService.findAll(), HttpStatus.OK);
@@ -52,6 +53,7 @@ public class ProductController {
     @GetMapping("/getById/{idProducto}")
     public ResponseEntity<ProductoResponse> findById(@PathVariable int idProducto) {
         try {
+
             return ResponseEntity.status(HttpStatus.OK).body(productoService.findById(idProducto));
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

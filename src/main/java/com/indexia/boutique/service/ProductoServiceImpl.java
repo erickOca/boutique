@@ -64,7 +64,6 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public ProductoResponse updateProduct(ProductoRequest request) {
         Productos productos  = new Productos();
-        productos.setIdProducto(request.getId());
         productos.setNombre(request.getNombre());
         productos.setDescripcion(request.getDescripcion());
         productos.setPrecio(request.getPrecio());
