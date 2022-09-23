@@ -1,8 +1,7 @@
 package com.indexia.boutique.model.mapper;
 
-import com.indexia.boutique.model.entity.Clientes;
+import com.indexia.boutique.model.entity.DetallesUsuario;
 import com.indexia.boutique.util.request.ClienteRequest;
-import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ClienteResponse;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -24,10 +23,10 @@ public interface ClientMapper {
     @Mapping(source = "colonia",target ="colonia")
     @Mapping(source = "ciudad",target ="ciudad")
     @Mapping(source = "pais",target ="pais")
-    ClienteResponse toMapperDto(Clientes clientes);
-    List<ClienteResponse> toMapperDtoLis(List<Clientes> clientesList);
+    ClienteResponse toMapperDto(DetallesUsuario detallesUsuario);
+    List<ClienteResponse> toMapperDtoLis(List<DetallesUsuario> detallesUsuarioList);
     @InheritInverseConfiguration
-    Clientes toMapperEntity(ClienteRequest clienteRequest);
+    DetallesUsuario toMapperEntity(ClienteRequest clienteRequest);
 
 
 

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "USUARIOS")
-public class Usuarios {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class Usuarios {
     @Column(name = "apellidos", length = 200)
     private String apellidos;
 
-    @Column(name = "email", length = 80)
+    @Column(name = "email", nullable = false, unique = true, length = 80)
     private String email;
 
     @Column(name = "password", length = 80)

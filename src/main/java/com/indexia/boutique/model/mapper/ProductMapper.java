@@ -24,8 +24,8 @@ public interface ProductMapper {
     @Mapping(source = "codigoBarras",target = "codigoBarras")
     @Mapping(source = "temporada",target = "temporada")
     @Mapping(source = "categoria",target = "categoria")
-    ProductoResponse toDto(Productos ucto);
-    List<ProductoResponse> toDtoLis(List<Productos> ucto);
+    ProductoResponse toDto(Productos productos);
+    List<ProductoResponse> toDtoLis(List<Productos> productos);
     @InheritInverseConfiguration
     Productos toEntity(ProductoRequest productoRequest);
 

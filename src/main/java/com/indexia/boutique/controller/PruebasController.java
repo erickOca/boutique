@@ -22,7 +22,7 @@ public class PruebasController {
             pruevasService.inserTotal1();
             return ResponseEntity.status(HttpStatus.OK).body(Boolean.TRUE);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);
+            return ResponseEntity.status(HttpStatus.LOCKED).body("user exist");
         }
     }
 

@@ -3,7 +3,7 @@ package com.indexia.boutique.service;
 import com.indexia.boutique.model.dao.ClientesDao;
 import com.indexia.boutique.model.dao.MedioPagoDao;
 import com.indexia.boutique.model.dao.ProductoDao;
-import com.indexia.boutique.model.entity.Clientes;
+import com.indexia.boutique.model.entity.DetallesUsuario;
 import com.indexia.boutique.model.entity.MedioPago;
 import com.indexia.boutique.model.entity.Productos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class PruebasServiceImpl implements PruebasService {
 
     @Override
     public void inserTotal1() {
-        Clientes cliente = new Clientes(1, "Erick", "Ocampo", "Cortez", "En la calle", "Hombre",new Date(112,7,1,10,30,15),
+        DetallesUsuario cliente = new DetallesUsuario(1, "Erick", "Ocampo", "Cortez", "En la calle", "Hombre",new Date(112,7,1,10,30,15),
                 true, "ErickPerra@gamil.com", "32", "10", "Arroyo", "Arroyo", "Guerrero", "Taxco de Alarcon", "Mexico");
 
         Productos producto1 = new Productos(1, "camisa", "camisa de manga corta", 50, "pol", "M", "rojo", 3, "fdfs32", "verano", "M", "camisa");
