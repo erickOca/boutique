@@ -1,6 +1,5 @@
 package com.indexia.boutique.service;
 
-import com.indexia.boutique.model.entity.Clientes;
 import com.indexia.boutique.util.request.ClienteRequest;
 import com.indexia.boutique.util.response.ClienteResponse;
 

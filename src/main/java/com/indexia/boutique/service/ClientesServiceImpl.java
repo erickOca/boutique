@@ -1,7 +1,7 @@
 package com.indexia.boutique.service;
 
 import com.indexia.boutique.model.dao.ClientesDao;
-import com.indexia.boutique.model.entity.Clientes;
+import com.indexia.boutique.model.entity.DetallesUsuario;
 import com.indexia.boutique.model.mapper.ClientMapper;
 import com.indexia.boutique.util.request.ClienteRequest;
 import com.indexia.boutique.util.response.ClienteResponse;
@@ -21,9 +21,9 @@ public class ClientesServiceImpl implements ClientesService{
 
     @Override
     public ClienteResponse saveClient(ClienteRequest request) {
-        Clientes entityClientes = new Clientes();
-        entityClientes = clientMapper.INSTANCE.toMapperEntity(request);
-        ClienteResponse client = clientMapper.toMapperDto(clientesDao.save(entityClientes));
+        DetallesUsuario entityDetallesUsuario = new DetallesUsuario();
+        entityDetallesUsuario = clientMapper.INSTANCE.toMapperEntity(request);
+        ClienteResponse client = clientMapper.toMapperDto(clientesDao.save(entityDetallesUsuario));
         return client;
     }
 
@@ -46,7 +46,7 @@ public class ClientesServiceImpl implements ClientesService{
 
     @Override
     public ClienteResponse updateClient(ClienteRequest request) {
-        Clientes cliente =new Clientes(
+        DetallesUsuario cliente =new DetallesUsuario(
                 request.getId(),
                 request.getNombre(),
                 request.getApellidoPaterno(),
@@ -64,7 +64,7 @@ public class ClientesServiceImpl implements ClientesService{
                 request.getCiudad(),
                 request.getPais()
         );
-        Clientes entityClientes = new Clientes();
+        DetallesUsuario entityDetallesUsuario = new DetallesUsuario();
         ClienteResponse response = clientMapper.toMapperDto(clientesDao.save(cliente));
         return response;
     }

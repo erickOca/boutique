@@ -1,6 +1,5 @@
 package com.indexia.boutique.controller;
 
-import com.indexia.boutique.model.entity.Clientes;
 import com.indexia.boutique.service.ClientesService;
 import com.indexia.boutique.util.request.ClienteRequest;
 import com.indexia.boutique.util.response.ClienteResponse;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients")
-public class ClientController {
+@RequestMapping("/DetallesClient")
+public class DetallesClientController {
 
     @Autowired
     private ClientesService clientesService;

@@ -10,8 +10,8 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "detallesUsuario")
-public class Clientes {
+@Table(name = "DetallesUsuario")
+public class DetallesUsuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,12 +54,12 @@ public class Clientes {
     @JsonIgnoreProperties
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idUsuario")
-    private Usuarios usuarios;
+    private Users users;
 
-    public Clientes() {
+    public DetallesUsuario() {
     }
 
-    public Clientes(int idCliente, String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String sexo, Date fechaNac, Boolean estatus, String email, String numeroInterior, String numeroExterior, String calle, String colonia, String estado, String ciudad, String pais) {
+    public DetallesUsuario(int idCliente, String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String sexo, Date fechaNac, Boolean estatus, String email, String numeroInterior, String numeroExterior, String calle, String colonia, String estado, String ciudad, String pais) {
         this.idCliente = idCliente;
         this.direccion = direccion;
         this.sexo = sexo;

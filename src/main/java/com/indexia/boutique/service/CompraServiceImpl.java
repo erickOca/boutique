@@ -3,7 +3,7 @@ package com.indexia.boutique.service;
 import com.indexia.boutique.model.dao.ClientesDao;
 import com.indexia.boutique.model.dao.MedioPagoDao;
 import com.indexia.boutique.model.dao.ProductoDao;
-import com.indexia.boutique.model.entity.Clientes;
+import com.indexia.boutique.model.entity.DetallesUsuario;
 import com.indexia.boutique.model.entity.Productos;
 import com.indexia.boutique.util.request.CompraRequest;
 import com.indexia.boutique.util.response.CompraResponse;
@@ -26,7 +26,7 @@ public class CompraServiceImpl implements CompraService{
 
     @Override
     public CompraResponse saveCompra(CompraRequest request) {
-        Clientes cliente = clientesDao.getReferenceById(request.getIdCliente());
+        DetallesUsuario cliente = clientesDao.getReferenceById(request.getIdCliente());
 
         List<Productos> producto;
 
