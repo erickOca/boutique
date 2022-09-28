@@ -7,6 +7,8 @@ import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,8 +38,8 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     public List<ProductoResponse> findAll() {
-        List<ProductoResponse> responses = productMapper.toDtoLis(productoDao.findAll());
-        return responses;
+        List<ProductoResponse> daoAll = productMapper.toDtoLis(productoDao.findAll());
+        return daoAll;
     }
 
     @Override
@@ -79,6 +81,30 @@ public class ProductoServiceImpl implements ProductoService {
         productos.setCategoria(request.getCategoria());
         ProductoResponse response = productMapper.toDto(productoDao.save(productos));
         return response ;
+    }
+
+    @Override
+    public List<ProductoResponse> findAllByStock() {
+        List<ProductoResponse> list = productMapper.toDtoLis(productoDao.findAllByStock());
+        return list;
+    }
+
+    @Override
+    public List<ProductoResponse> findByTemporada(String temporada) {
+        List<ProductoResponse> list = productMapper.toDtoLis(productoDao.findByTemporada(temporada));
+        return list;
+    }
+
+    private boolean validaStock(Productos productos){
+        if (productos != null){
+            if (productos.getStock() != 0){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 }
 

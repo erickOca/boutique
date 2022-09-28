@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 //mapipa
 @Service
 public class DetallesOrdenServiceImpl implements DetallesOrdenService{
@@ -39,8 +41,8 @@ public class DetallesOrdenServiceImpl implements DetallesOrdenService{
 
     @Override
     public DetallesOrdenResponse updateDetallesOrde(DetallesOrdenRequest request, int id) {
-
-        if (detallesOrdenDao.findById(id) != null){
+        DetallesOrden orden = detallesOrdenDao.findById(id).orElse(null);
+        if (validar(request, orden)){
             Productos producto = productoDao.getReferenceById(request.getIdProducto());
             DetallesOrden detallesOrden = new DetallesOrden(
                     id,
@@ -52,7 +54,6 @@ public class DetallesOrdenServiceImpl implements DetallesOrdenService{
             DetallesOrdenResponse response = detallesOrdenMapper.toMapperDto(detallesOrdenDao.save(detallesOrden));
             return response;
         }else {
-            System.out.printf("Id invalido intenta otra ves ");
             return null;
         }
     }
@@ -76,6 +77,18 @@ public class DetallesOrdenServiceImpl implements DetallesOrdenService{
             return list;
         }
 
+    }
+
+    public boolean validar(DetallesOrdenRequest request, DetallesOrden orden){
+        if (request.getUnidades() != 0){
+            if (orden != null){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
 

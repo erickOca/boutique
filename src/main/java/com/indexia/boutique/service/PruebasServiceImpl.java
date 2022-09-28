@@ -31,11 +31,17 @@ public class PruebasServiceImpl implements PruebasService {
 
         Productos producto2 = new Productos(2, "pantalon", "pantalon corte recto", 200, "mex", "M", "blanco", 12, "csdd223", "verano", "M", "pantalon");
 
+        Productos producto3 = new Productos(3, "camiseta", "camiseta sin manga", 100, "mex", "G", "blanco", 0, "crrr223", "verano", "M", "camisa");
+
+        Productos producto4 = new Productos(4, "zapatos", "zapatos de vestir", 300, "mex", "G", "negro", 0, "dada223", "verano", "H", "zapatos");
+
         MedioPago medioPago = new MedioPago(1, "Efectivo", true);
 
         clientesDao.save(cliente);
         productoDao.save(producto1);
         productoDao.save(producto2);
+        productoDao.save(producto3);
+        productoDao.save(producto4);
         medioPagoDao.save(medioPago);
     }
 }

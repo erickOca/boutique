@@ -30,7 +30,7 @@ public class DetallesOrdenController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.updateDetallesOrde(request, idDetallesOrden));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("ID invalido intenta otra ves " + e);
         }
     }
 

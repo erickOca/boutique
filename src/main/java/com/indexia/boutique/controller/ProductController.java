@@ -25,8 +25,7 @@ public class ProductController {
         try {
             return new ResponseEntity<>(productoService.findAll(), HttpStatus.OK);
         }catch (Exception e){
-            List<Productos> productos = (List<Productos>) new Productos();
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(productos);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
         }
     }
 
@@ -90,6 +89,24 @@ public class ProductController {
     public ResponseEntity<?> updateProducto(@RequestBody ProductoRequest request){
         try {
             return  ResponseEntity.status(HttpStatus.OK).body(productoService.updateProduct(request));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+    @PutMapping("/getAllByStock")
+    public ResponseEntity<?> getAllByStock(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(productoService.findAllByStock());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+    @PutMapping("/getByTemporada")
+    public ResponseEntity<?> getByTemporada(@RequestParam String temporada){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(productoService.findByTemporada(temporada));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }

@@ -42,6 +42,17 @@ public class DetallesOrden {
         this.importe = importe;
         this.nDeCarro = nDeCarro;
         this.productos = productos;
+    }
 
+    @Override
+    public String toString() {
+        return "DetallesOrden{" +
+                "idDetallesOrden=" + idDetallesOrden +
+                ", unidades=" + unidades +
+                ", importe=" + importe +
+                ", nDeCarro=" + nDeCarro +
+                ", productos=" + productos +
+                ", orden=" + orden +
+                '}';
     }
 }
