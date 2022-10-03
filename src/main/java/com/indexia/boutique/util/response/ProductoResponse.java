@@ -2,6 +2,7 @@ package com.indexia.boutique.util.response;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -28,4 +29,6 @@ public class ProductoResponse {
     private String genero;
 
     private String categoria;
+
+    private String imagen;
 }

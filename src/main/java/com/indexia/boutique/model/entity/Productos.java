@@ -49,10 +49,13 @@ public class Productos {
     @Column(name = "categoria",length = 45)
     private String categoria;
 
+    @Column(name = "imagen",length = 200)
+    private String imagen;
+
     public Productos() {
     }
 
-    public Productos(int idProducto, String nombre, String descripcion, float precio, String marca, String talla, String color, int stock, String codigoBarras, String temporada, String genero, String categoria) {
+    public Productos(int idProducto, String nombre, String descripcion, float precio, String marca, String talla, String color, int stock, String codigoBarras, String temporada, String genero, String categoria, String imagen) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -65,6 +68,7 @@ public class Productos {
         this.temporada = temporada;
         this.genero = genero;
         this.categoria = categoria;
+        this.imagen = imagen;
     }
 }
 
