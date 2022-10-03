@@ -28,4 +28,6 @@ public class ProductoRequest {
     private String genero;
 
     private String categoria;
+
+    private String imagen;
 }
