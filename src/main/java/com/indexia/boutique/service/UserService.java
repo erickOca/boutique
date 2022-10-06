@@ -7,11 +7,6 @@ import java.util.List;
 
 public interface UserService {
 
-    UserResponse saveUser(UserRequest request);
-
-    UserResponse findByEmail(String email);
-
-    List<UserResponse> findAll();
 
     void delete(String email);
 
