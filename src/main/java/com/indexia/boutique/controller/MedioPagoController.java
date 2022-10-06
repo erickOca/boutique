@@ -2,7 +2,6 @@ package com.indexia.boutique.controller;
 
 import com.indexia.boutique.service.MedioPagoService;
 import com.indexia.boutique.util.request.MedioPagoRequest;
-import com.indexia.boutique.util.response.ClienteResponse;
 import com.indexia.boutique.util.response.MedioPagoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,8 +1,6 @@
 package com.indexia.boutique.controller;
 
-import com.indexia.boutique.model.entity.Users;
 import com.indexia.boutique.service.UserService;
-import com.indexia.boutique.service.UserServiceImpl;
 import com.indexia.boutique.util.request.UserRequest;
 import com.indexia.boutique.util.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,34 +19,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/saveUser")
-    public ResponseEntity<?> saveUser(@RequestBody UserRequest request) {
-        try {
-            UserResponse user = userService.saveUser(request);
-            return ResponseEntity.status(HttpStatus.OK).body(user);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);
-        }
-    }
-
-    @GetMapping("/getUser")
-    public ResponseEntity<?> getUser(@RequestParam String email) {
-        UserResponse user = userService.findByEmail(email);
-        if (user != null) {
-                return ResponseEntity.status(HttpStatus.OK).body(user);
-            }else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-        }
-    }
-
-    @GetMapping("/findAllUser")
-    public ResponseEntity<?> findAllUser(){
-        try {
-            return new ResponseEntity<>(userService.findAll(),HttpStatus.OK);
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);
-        }
-    }
 
     @DeleteMapping("/deleteUser/{email}")
     public ResponseEntity<?> deleteUser(@PathVariable String email){
