@@ -7,11 +7,11 @@ import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
@@ -40,6 +40,7 @@ public class ProductoServiceImpl implements ProductoService {
     public List<ProductoResponse> findAll() {
         List<ProductoResponse> daoAll = productMapper.toDtoLis(productoDao.findAll());
         return daoAll;
+
     }
 
     @Override
