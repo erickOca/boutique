@@ -7,9 +7,12 @@ import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
+@Transactional
 public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
@@ -36,8 +39,8 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     public List<ProductoResponse> findAll() {
-        List<ProductoResponse> responses = productMapper.toDtoLis(productoDao.findAll());
-        return responses;
+        List<ProductoResponse> response = productMapper.toDtoLis(productoDao.findAll());
+        return response;
     }
 
     @Override
