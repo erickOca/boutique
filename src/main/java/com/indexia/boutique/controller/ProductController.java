@@ -1,19 +1,17 @@
 package com.indexia.boutique.controller;
 
-import com.indexia.boutique.model.entity.Productos;
 import com.indexia.boutique.service.ProductoService;
 import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
-
 
 @RestController
 @RequestMapping("/products")
-@CrossOrigin(origins = "http://localhost:4200" )
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
     @Autowired
@@ -23,27 +21,29 @@ public class ProductController {
     public ResponseEntity<?> listaProducto() {
         try {
             return new ResponseEntity<>(productoService.findAll(), HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/save")
     public ResponseEntity<?> CrearProducto(@RequestBody ProductoRequest request) {
         try {
             ProductoResponse product = productoService.save(request);
             return ResponseEntity.status(HttpStatus.OK).body(product);
-        }catch (Exception e){
-          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Boolean.FALSE);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Boolean.FALSE);
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{idProducto}")
     public ResponseEntity delete(@PathVariable int idProducto) {
         try {
             productoService.delete(idProducto);
             return ResponseEntity.status(HttpStatus.OK).body(Boolean.TRUE);
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Boolean.FALSE);
         }
     }
@@ -53,7 +53,7 @@ public class ProductController {
         try {
 
             return ResponseEntity.status(HttpStatus.OK).body(productoService.findById(idProducto));
-        }catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -77,36 +77,34 @@ public class ProductController {
     }
 
     @GetMapping("/getByCategoria")
-    public ResponseEntity<?> findByCategoria(@RequestParam String categoria){
+    public ResponseEntity<?> findByCategoria(@RequestParam String categoria) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(productoService.findByCategoria(categoria));
-        }catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
-        }
-    }
-    @PutMapping("/updateProducto")
-    public ResponseEntity<?> updateProducto(@RequestBody ProductoRequest request){
-        try {
-            return  ResponseEntity.status(HttpStatus.OK).body(productoService.updateProduct(request));
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
 
+//    @PreAuthorize("hasRole('ADMIN')")
+//    @PutMapping("/updateProducto/{idProducto}")
+//    public ResponseEntity<String> updateProducto(@PathVariable("idProducto") int idProducto, @RequestBody ProductoRequest request) {
+//
+//    }
+
     @PutMapping("/getAllByStock")
-    public ResponseEntity<?> getAllByStock(){
+    public ResponseEntity<?> getAllByStock() {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(productoService.findAllByStock());
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
 
     @PutMapping("/getByTemporada")
-    public ResponseEntity<?> getByTemporada(@RequestParam String temporada){
+    public ResponseEntity<?> getByTemporada(@RequestParam String temporada) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(productoService.findByTemporada(temporada));
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }

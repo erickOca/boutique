@@ -67,24 +67,6 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public ProductoResponse updateProduct(ProductoRequest request) {
-        Productos productos  = new Productos();
-        productos.setNombre(request.getNombre());
-        productos.setDescripcion(request.getDescripcion());
-        productos.setPrecio(request.getPrecio());
-        productos.setMarca(request.getMarca());
-        productos.setTalla(request.getTalla());
-        productos.setColor(request.getColor());
-        productos.setStock(request.getStock());
-        productos.setCodigoBarras(request.getCodigoBarras());
-        productos.setTemporada(request.getTemporada());
-        productos.setGenero(request.getGenero());
-        productos.setCategoria(request.getCategoria());
-        ProductoResponse response = productMapper.toDto(productoDao.save(productos));
-        return response ;
-    }
-
-    @Override
     public List<ProductoResponse> findAllByStock() {
         List<ProductoResponse> list = productMapper.toDtoLis(productoDao.findAllByStock());
         return list;

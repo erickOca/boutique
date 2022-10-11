@@ -21,8 +21,6 @@ public interface ProductoService {
 
     List<ProductoResponse> findByCategoria(String categoria);
 
-    public ProductoResponse updateProduct(ProductoRequest request);
-
     List<ProductoResponse> findAllByStock();
 
     List<ProductoResponse> findByTemporada(String temporada);
