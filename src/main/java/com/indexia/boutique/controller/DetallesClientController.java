@@ -1,8 +1,8 @@
 package com.indexia.boutique.controller;
 
-import com.indexia.boutique.service.ClientesService;
-import com.indexia.boutique.util.request.ClienteRequest;
-import com.indexia.boutique.util.response.ClienteResponse;
+import com.indexia.boutique.service.DetallesUserService;
+import com.indexia.boutique.util.request.DetallesUserRequest;
+import com.indexia.boutique.util.response.DetallesUserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +15,12 @@ import java.util.List;
 public class DetallesClientController {
 
     @Autowired
-    private ClientesService clientesService;
+    private DetallesUserService detallesUserService;
 
     @PostMapping("/saveClient")
-    public ResponseEntity<?> saveClient(@RequestBody ClienteRequest clienteRequest){
+    public ResponseEntity<?> saveClient(@RequestBody DetallesUserRequest clienteRequest){
         try {
-            ClienteResponse client = clientesService.saveClient(clienteRequest);
+            DetallesUserResponse client = detallesUserService.saveClient(clienteRequest);
             return ResponseEntity.status(HttpStatus.OK).body(client);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);
@@ -30,7 +30,7 @@ public class DetallesClientController {
     @GetMapping("/findAllClient")
     public ResponseEntity<?> listClient(){
         try {
-            List<ClienteResponse> clientes = clientesService.findAll();
+            List<DetallesUserResponse> clientes = detallesUserService.findAll();
             return  ResponseEntity.status(HttpStatus.OK).body(clientes);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
@@ -40,7 +40,7 @@ public class DetallesClientController {
     @GetMapping("/getClientById/{idCliente}")
     public ResponseEntity<?> findById(@PathVariable int idCliente){
         try {
-            ClienteResponse cliente = clientesService.findById(idCliente);
+            DetallesUserResponse cliente = detallesUserService.findById(idCliente);
             return ResponseEntity.status(HttpStatus.OK).body(cliente);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
@@ -50,7 +50,7 @@ public class DetallesClientController {
     @DeleteMapping("/deleteClient/{idCliente}")
     public ResponseEntity<?> deleteClient(@PathVariable int idCliente){
         try {
-            clientesService.delete(idCliente);
+            detallesUserService.delete(idCliente);
             return  ResponseEntity.status(HttpStatus.OK).body(Boolean.TRUE);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Boolean.FALSE);
@@ -58,9 +58,9 @@ public class DetallesClientController {
     }
 
     @PutMapping("/updateCliente")
-    public ResponseEntity<?> updateCliente(@RequestBody ClienteRequest request){
+    public ResponseEntity<?> updateCliente(@RequestBody DetallesUserRequest request){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(clientesService.updateClient(request));
+            return ResponseEntity.status(HttpStatus.OK).body(detallesUserService.updateClient(request));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }

@@ -3,6 +3,8 @@ package com.indexia.boutique.controller;
 import com.indexia.boutique.service.ProductoService;
 import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +28,6 @@ public class ProductController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/save")
     public ResponseEntity<?> CrearProducto(@RequestBody ProductoRequest request) {
         try {
@@ -37,7 +38,6 @@ public class ProductController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{idProducto}")
     public ResponseEntity delete(@PathVariable int idProducto) {
         try {

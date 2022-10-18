@@ -1,5 +1,6 @@
 package com.indexia.boutique.util.request;
 
+import com.indexia.boutique.model.entity.Users;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,15 +8,13 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class ClienteRequest {
+public class DetallesUserRequest {
 
     private int id;
 
     private String nombre;
 
-    private String apellidoPaterno;
-
-    private String apellidoMaterno;
+    private String apellidos;
 
     private String direccion;
 
@@ -25,19 +24,8 @@ public class ClienteRequest {
 
     private Boolean estatus;
 
-    private String email;
-
-    private String numeroInterior;
-
-    private String numeroExterior;
-
-    private String calle;
-
-    private String colonia;
-
-    private String estado;
-
     private String ciudad;
 
-    private String pais;
+    private Users idUsuario;
+
 }

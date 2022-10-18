@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -15,8 +17,8 @@ public class Orden {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCompras", nullable = false, unique = true)
-    private int idCompra;
+    @Column(name = "id_Orden", nullable = false, unique = true)
+    private int idOrden;
 
     @Column(name = "comentario", length = 200)
     private String comentario;
@@ -30,15 +32,11 @@ public class Orden {
     @Column(name = "total")
     private float total;
 
-    @Column(name = "iva")
-    private float iva;
-
-   @JoinColumn(name = "id_Cliente")
+   @JoinColumn(name = "idDetUsuario")
     @ManyToOne(fetch = FetchType.LAZY)
     private DetallesUsuario detallesUsuario;
 
-    @JoinColumn(name = "idMedio_pago")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private MedioPago medioPago;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Productos> listproductos;
 
 }

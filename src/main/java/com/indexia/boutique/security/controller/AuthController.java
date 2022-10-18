@@ -10,6 +10,9 @@ import com.indexia.boutique.security.enums.RolNombre;
 import com.indexia.boutique.security.jwt.JwtProvider;
 import com.indexia.boutique.security.service.RolService;
 import com.indexia.boutique.security.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +58,7 @@ public class AuthController {
         if (usuarioService.existsByEmail(nuevoUsuario.getEmail()))
             return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
         Users user =
-                new Users(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(), nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getPassword()));
+                new Users(nuevoUsuario.getNombreUsuario(), nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByNombre(RolNombre.ROLE_USER).get());
         if (nuevoUsuario.getRoles().contains("admin"))

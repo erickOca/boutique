@@ -1,8 +1,9 @@
 package com.indexia.boutique.model.mapper;
 
 import com.indexia.boutique.model.entity.DetallesUsuario;
-import com.indexia.boutique.util.request.ClienteRequest;
-import com.indexia.boutique.util.response.ClienteResponse;
+import com.indexia.boutique.util.request.DetallesUserRequest;
+
+import com.indexia.boutique.util.response.DetallesUserResponse;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -17,16 +18,13 @@ public interface ClientMapper {
     @Mapping(source = "sexo",target ="sexo")
     @Mapping(source = "fechaNac",target ="fechaNac")
     @Mapping(source = "estatus",target ="estatus")
-    @Mapping(source = "numeroInterior",target ="numeroInterior")
-    @Mapping(source = "numeroExterior",target ="numeroExterior")
-    @Mapping(source = "calle",target ="calle")
-    @Mapping(source = "colonia",target ="colonia")
     @Mapping(source = "ciudad",target ="ciudad")
-    @Mapping(source = "pais",target ="pais")
-    ClienteResponse toMapperDto(DetallesUsuario detallesUsuario);
-    List<ClienteResponse> toMapperDtoLis(List<DetallesUsuario> detallesUsuarioList);
+    @Mapping(source = "idUsuario",target ="idUsuario")
+
+    DetallesUserResponse toMapperDto(DetallesUsuario detallesUsuario);
+    List<DetallesUserResponse> toMapperDtoLis(List<DetallesUsuario> detallesUsuarioList);
     @InheritInverseConfiguration
-    DetallesUsuario toMapperEntity(ClienteRequest clienteRequest);
+    DetallesUsuario toMapperEntity(DetallesUserRequest request);
 
 
 
