@@ -16,40 +16,40 @@ public class Productos {
     @Column(name = "idProducto",nullable = false,unique = true)
     private int idProducto;
 
-    @Column(name = "nombre", length = 50)
+    @Column(name = "nombre",nullable = false , length = 50)
     private String nombre;
 
-    @Column(name = "descripcion", length = 200)
+    @Column(name = "descripcion", nullable = false ,length = 200)
     private String descripcion;
 
-    @Column(name = "precio")
+    @Column(name = "precio", nullable = false)
     private float precio;
 
-    @Column(name = "marca", length = 45)
+    @Column(name = "marca", nullable = false,  length = 45)
     private String marca;
 
-    @Column(name = "talla", length = 45)
+    @Column(name = "talla", nullable = false, length = 45)
     private String talla;
 
-    @Column(name = "color", length = 80)
+    @Column(name = "color", nullable = false, length = 80)
     private String color;
 
-    @Column(name = "stock")
+    @Column(name = "stock", nullable = false)
     private int stock;
 
-    @Column(name = "codigoBarras", length = 80)
+    @Column(name = "codigoBarras",nullable = false, length = 80)
     private String codigoBarras;
 
-    @Column(name = "temporada", length = 45)
+    @Column(name = "temporada", nullable = false,length = 45)
     private String temporada;
 
-    @Column(name = "genero", length = 45)
+    @Column(name = "genero",nullable = false, length = 45)
     private String genero;
 
-    @Column(name = "categoria",length = 45)
+    @Column(name = "categoria",nullable = false,length = 45)
     private String categoria;
 
-    @Column(name = "imagen",length = 200)
+    @Column(name = "imagen",nullable = false,length = 200)
     private String imagen;
 
     public Productos() {

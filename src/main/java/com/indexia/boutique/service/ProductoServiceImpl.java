@@ -20,8 +20,6 @@ public class ProductoServiceImpl implements ProductoService {
     @Autowired
     private ProductMapper productMapper;
 
-
-
     @Override
     public ProductoResponse save(ProductoRequest request) {
         Productos entityRequest = new Productos();
@@ -39,6 +37,7 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public List<ProductoResponse> findAll() {
         List<ProductoResponse> daoAll = productMapper.toDtoLis(productoDao.findAll());
+
         return daoAll;
 
     }
@@ -76,6 +75,17 @@ public class ProductoServiceImpl implements ProductoService {
     public List<ProductoResponse> findByTemporada(String temporada) {
         List<ProductoResponse> list = productMapper.toDtoLis(productoDao.findByTemporada(temporada));
         return list;
+    }
+
+    @Override
+    public List<ProductoResponse> findByNombre(String nombre) {
+        List<ProductoResponse> list = productMapper.toDtoLis((productoDao.findByNombre(nombre)));
+        return list;
+    }
+
+    @Override
+    public Productos updateProducto(Productos productos) {
+       return this.productoDao.save(productos);
     }
 
     private boolean validaStock(Productos productos){
