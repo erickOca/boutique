@@ -30,4 +30,7 @@ public class ProductoRequest {
     private String categoria;
 
     private String imagen;
+
+
+
 }

@@ -1,5 +1,6 @@
 package com.indexia.boutique.service;
 
+import com.indexia.boutique.model.entity.Productos;
 import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
 
@@ -24,5 +25,10 @@ public interface ProductoService {
     List<ProductoResponse> findAllByStock();
 
     List<ProductoResponse> findByTemporada(String temporada);
+
+    List<ProductoResponse> findByNombre(String nombre);
+
+    Productos updateProducto(Productos productos);
+
 }
 

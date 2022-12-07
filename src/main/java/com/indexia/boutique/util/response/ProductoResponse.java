@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 public class ProductoResponse {
 
+    private int idProducto;
+
     private String nombre;
 
     private String descripcion;

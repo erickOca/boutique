@@ -1,12 +1,12 @@
 package com.indexia.boutique.controller;
 
+import com.indexia.boutique.model.entity.Productos;
 import com.indexia.boutique.service.ProductoService;
 import com.indexia.boutique.util.request.ProductoRequest;
 import com.indexia.boutique.util.response.ProductoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,7 +26,6 @@ public class ProductController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/save")
     public ResponseEntity<?> CrearProducto(@RequestBody ProductoRequest request) {
         try {
@@ -37,7 +36,6 @@ public class ProductController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{idProducto}")
     public ResponseEntity delete(@PathVariable int idProducto) {
         try {
@@ -83,13 +81,14 @@ public class ProductController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
+
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
-//    @PutMapping("/updateProducto/{idProducto}")
-//    public ResponseEntity<String> updateProducto(@PathVariable("idProducto") int idProducto, @RequestBody ProductoRequest request) {
-//
-//    }
+    @PutMapping("/updateProducto")
+    public ResponseEntity<?> updateProducto(@RequestBody Productos producto) {
+        Productos productoUpdate = this.productoService.updateProducto(producto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productoUpdate);
+    }
 
     @PutMapping("/getAllByStock")
     public ResponseEntity<?> getAllByStock() {
@@ -104,6 +103,15 @@ public class ProductController {
     public ResponseEntity<?> getByTemporada(@RequestParam String temporada) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(productoService.findByTemporada(temporada));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+    @GetMapping("findByNombre")
+    public ResponseEntity<?> getByNombre(@RequestParam String nombre) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(productoService.findByNombre(nombre));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }

@@ -13,6 +13,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
     ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
+    @Mapping(source = "idProducto",target = "idProducto")
     @Mapping(source = "nombre",target = "nombre")
     @Mapping(source = "descripcion",target = "descripcion")
     @Mapping(source = "precio",target = "precio")

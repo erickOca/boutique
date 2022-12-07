@@ -25,4 +25,6 @@ public interface ProductoDao extends JpaRepository<Productos, Integer> {
     @Query(value = "SELECT * FROM productos WHERE temporada = ? AND stock > 0", nativeQuery = true)
     List<Productos> findByTemporada(String temporada);
 
+    @Query(value = "SELECT * FROM productos WHERE nombre = nombre AND stock > 0", nativeQuery = true)
+    List<Productos> findByNombre(String nombre);
 }
